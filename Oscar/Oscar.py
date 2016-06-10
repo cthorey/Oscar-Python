@@ -1,5 +1,5 @@
 import json
-import urllib
+import urllibe
 
 __all__ = ['Oscar', 'ClientException']
 
@@ -22,7 +22,7 @@ class Oscar:
         # prepare request
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json',
                    'Authorization': 'Bearer ' + self.access_token}
-        url = url + '?' + urllib.urlencode(params)
+        url = url + '?' + urllib.parse.urlencode(params)
         req = urllib.request.Request(self.DOMAIN_URL + url, None, headers)
         try:
             resp = urllib.request.urlopen(req)

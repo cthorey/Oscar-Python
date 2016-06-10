@@ -1,5 +1,8 @@
 import json
 import urllib
+from urllib.parse import urlencode
+from urllib.request import Request
+from urllib.request import urlopen
 
 __all__ = ['Oscar', 'ClientException']
 
@@ -22,12 +25,12 @@ class Oscar:
         # prepare request
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json',
                    'Authorization': 'Bearer ' + self.access_token}
-        url = url + '?' + urllib.parse.urlencode(params)
-        req = urllib.request.Request(self.DOMAIN_URL + url, None, headers)
+        url = url + '?' + urlencode(params)
+        req = Request(self.DOMAIN_URL + url, None, headers)
         try:
-            resp = urllib.request.urlopen(req)
-            content = resp.read()
-            result = json.loads(str(content))
+            resp = urlopen(req)
+            content = resp.read().decode('utf-8')
+            result = json.loads(content)
             if result:
                 if 'redirect' in result:
                     raise ClientException(

@@ -1,6 +1,8 @@
 # set up Oscar
-from Oscar import Oscar
-ACCESS_TOKEN = 'copy the access token from your Account panel here'
+from Oscar.Oscar import Oscar
+import os
+
+ACCESS_TOKEN = os.environ['OSCAR_API_TOKEN_ACCES']
 scientist = Oscar(ACCESS_TOKEN)
 
 # define your experiment hyperparameters' space here

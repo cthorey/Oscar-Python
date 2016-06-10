@@ -1,3 +1,5 @@
+Update the code to run with python 3 
+
 Oscar's Python client
 ==================
 

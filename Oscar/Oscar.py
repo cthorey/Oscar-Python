@@ -1,6 +1,5 @@
 import json
 import urllib
-import urllib2
 
 __all__ = ['Oscar', 'ClientException']
 
@@ -24,9 +23,9 @@ class Oscar:
         headers = {'Content-Type': 'application/json', 'Accept': 'application/json',
                    'Authorization': 'Bearer ' + self.access_token}
         url = url + '?' + urllib.urlencode(params)
-        req = urllib2.Request(self.DOMAIN_URL + url, None, headers)
+        req = urllib.request.Request(self.DOMAIN_URL + url, None, headers)
         try:
-            resp = urllib2.urlopen(req)
+            resp = urllib.request.urlopen(req)
             content = resp.read()
             result = json.loads(content)
             if result:

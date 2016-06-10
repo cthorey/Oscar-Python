@@ -1,5 +1,5 @@
 import json
-import urllibe
+import urllib
 
 __all__ = ['Oscar', 'ClientException']
 

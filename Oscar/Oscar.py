@@ -27,7 +27,7 @@ class Oscar:
         try:
             resp = urllib.request.urlopen(req)
             content = resp.read()
-            result = json.loads(content)
+            result = json.loads(str(content))
             if result:
                 if 'redirect' in result:
                     raise ClientException(
